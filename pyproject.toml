@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyuntype"
-version = "0.0.2"
+version = "0.0.3"
 description = "Programatically untype your Python code"
 authors = ["Escape Technologies SAS <ping@escape.tech>"]
 maintainers = ["Antoine Carossio <antoine.carossio@me.com>"]
@@ -10,7 +10,7 @@ packages = [
 ]
 readme = "README.md"
 "homepage" = "https://escape.tech/"
-"repository" = "https://gitlab.com/escape.tech/misc/pyuntype/"
+"repository" = "https://github.com/Escape-Technologies/pyuntype"
 "classifiers" = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -19,7 +19,7 @@ readme = "README.md"
 
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://gitlab.com/escape.tech/misc/pyuntype/issue"
+"Bug Tracker" = "https://github.com/Escape-Technologies/pyuntype/issues"
 
 
 [tool.poetry.dependencies]
