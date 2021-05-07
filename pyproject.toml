@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "pyuntype"
+version = "0.0.2"
+description = "Programatically untype your Python code"
+authors = ["Escape Technologies SAS <ping@escape.tech>"]
+maintainers = ["Antoine Carossio <antoine.carossio@me.com>"]
+license = "Apache-2.0"
+packages = [
+    { include = "pyuntype_cli" }
+]
+readme = "README.md"
+"homepage" = "https://escape.tech/"
+"repository" = "https://gitlab.com/escape.tech/misc/pyuntype/"
+"classifiers" = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://gitlab.com/escape.tech/misc/pyuntype/issue"
+
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pydash = "^5.0.0"
+click  = "^7.1.2"
+loguru = "^0.5.3"
+astor  = "^0.8.1"
+
+[tool.poetry.dev-dependencies]
+pytest        = "^6.2.2"
+setuptools    = "^45"
+yapf          = "^0.31.0"
+pylint-quotes = "^0.2.1"
+mypy          = "^0.812"
+docformatter  = "^1.4"
+
+[tool.poetry.scripts]
+pyuntype = 'pyuntype_cli:main'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

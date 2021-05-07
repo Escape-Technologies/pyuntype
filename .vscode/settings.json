@@ -1,0 +1,17 @@
+{
+    "python.languageServer": "Pylance",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintPath": "pylint",
+    "python.formatting.provider": "yapf",
+    "editor.formatOnSave": true,
+    "spellright.language": [
+        "en",
+        "fr"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ],
+}

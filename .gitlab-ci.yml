@@ -1,0 +1,62 @@
+image: escapetech/ci:latest
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  MIN_TEST_COV: "20"
+  MODULE_NAME: "pyuntype_cli"
+
+cache:
+  paths:
+    - /root/.venv/
+
+stages:
+  - test_unit
+  - publish
+
+##############################
+########## PYTHON ############
+##############################
+
+test:
+  stage: test_unit
+  script:
+    - . /root/.venv/bin/activate
+    - which python
+    - python3.9 -V
+    - poetry install
+    - pylint --load-plugins pylint_quotes $MODULE_NAME tests
+    - docformatter --wrap-summaries 160 --wrap-descriptions 160 -cr $MODULE_NAME tests
+    - yapf -rd $MODULE_NAME tests
+    - mypy $MODULE_NAME tests
+    - pytest -cov=$MODULE_NAME tests
+    #- sleep 10000
+  tags:
+    - staging
+    - kubernetes
+
+release-beta:
+  stage: publish
+  script:
+    - git remote set-url origin https://gitlab-ci-token:$GL_TOKEN@gitlab.com/escape.tech/python-cli.git/
+    - . /root/.venv/bin/activate
+    - ./scripts/tag-beta.sh
+  only:
+    refs:
+      - beta
+  tags:
+    - staging
+    - kubernetes
+
+release:
+  stage: publish
+  script:
+    - . /root/.venv/bin/activate
+    - git config --global user.name "semantic-release (via Gitlab CI)"
+    - git config --global user.email "semantic-release@gitlab"
+    - semantic-release publish --verbosity=DEBUG
+  only:
+    refs:
+      - master
+  tags:
+    - staging
+    - kubernetes

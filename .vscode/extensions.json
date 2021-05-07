@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "BriteSnow.vscode-toggle-quotes",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "redhat.vscode-yaml",
+        "bungcip.better-toml"
+    ]
+}
